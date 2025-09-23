@@ -1,0 +1,15 @@
+html {
+    box-sizing: border-box;
+    font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+img {
+    width: 50%;
+    height: auto;
+}
