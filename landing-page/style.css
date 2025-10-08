@@ -16,26 +16,76 @@ html {
 }
 
 img {
-    max-width: 50%;
-    height: auto;
+    /* max-width: 50%;
+    height: auto; */
+    /* border: solid; */
+    text-align: center;
+    background-color: gray;
+}
+
+a {
+    color: #F9FAF8;
+    text-decoration: none;
 }
 
 body {
+    height: 100vh;
+    margin: auto;
     display: flex;
     flex-direction: column;
 }
 
 .header {
+    color: #F9FAF8;
+    background-color: #1F2937;
+
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-around;
+    align-items: center;
     padding: 2rem;
     gap: 1rem;
 }
 
+.header-logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+.card-one {
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+
+    color: #F9FAF8;
+    background-color: #1F2937;
+}
+
+.signup-button {
+    color: #F9FAF8;
+    background-color: #3882F6;
+    width: 100px;
+    height: 30px;
+    border-radius: 10px;
+}
+
+.card-two {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+
+    color: #1F2937;
+    background-color: #F9FAF8;
+}
+
 .footer {
+    color: #F9FAF8;
+    background-color: #1F2937;
+
     display: flex;
     justify-content: center;
     justify-self: flex-end;
+    padding: 2rem;
 }
 
 .push-right {
