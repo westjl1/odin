@@ -19,3 +19,25 @@ img {
     max-width: 50%;
     height: auto;
 }
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    padding: 2rem;
+    gap: 1rem;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    justify-self: flex-end;
+}
+
+.push-right {
+    margin-left: auto;
+}
