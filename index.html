@@ -62,5 +62,33 @@
     console.log(`Hello, ${nameJohn}!`); // Hello, John!
 
     console.log(typeof alert);
+
+    //foundations-function-basics
+    function add7(num) {
+      return num + 7;
+    }
+    console.log(add7(10));
+
+    function multiply(a, b) {
+      return a * b;
+    }
+    console.log(multiply(3, 2));
+
+    function capitalize(word) {
+      let cap = String(word).charAt(0).toUpperCase();
+      let low = String(word).slice(1).toLowerCase();
+      return (
+        String(word).charAt(0).toUpperCase() +
+        String(word).slice(1).toLowerCase()
+      );
+    }
+    console.log(capitalize("abcd"));
+    console.log(capitalize("ABCD"));
+    console.log(capitalize("aBcD"));
+
+    function lastLetter(word) {
+      return String(word).charAt(String(word).length - 1);
+    }
+    console.log(lastLetter("abcd"));
   </script>
 </html>
