@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping list example</title>
     <style>
       li {
@@ -12,34 +12,64 @@
       li button {
         font-size: 12px;
         margin-left: 20px;
-        color: #666;
+        color: #fa0a0a;
       }
     </style>
   </head>
   <body>
-
     <h1>My shopping list</h1>
 
     <form>
       <label for="item">Enter a new item:</label>
-      <input type="text" name="item" id="item">
+      <input type="text" name="item" id="item" />
       <button>Add item</button>
     </form>
 
-    <ul>
-
-    </ul>
+    <ul></ul>
 
     <script>
-        let listView = document.querySelector("ul")
-        let textInput = document.querySelector("input")
-        let addButton = document.querySelector("button")
+      const listVw = document.querySelector("ul");
+      const textInp = document.querySelector("input");
+      const addBtn = document.querySelector("button");
 
-        function buttonClick () {
+      function addBtnClick(e) {
+        e.preventDefault();
 
-        }
+        let addText = textInp.value;
+        textInp.value = "";
 
-        
+        const newLi = document.createElement("li");
+
+        const newSpan = document.createElement("span");
+        const newButton = document.createElement("button");
+
+        newLi.appendChild(newSpan);
+        newLi.appendChild(newButton);
+
+        newSpan.textContent = addText;
+        newButton.textContent = "Delete";
+
+        listVw.appendChild(newLi);
+
+        newButton.addEventListener("click", (e) => {
+          listVw.removeChild(newLi);
+          textInp.focus();
+        });
+
+        textInp.focus();
+      }
+
+      addBtn.addEventListener("click", (e) => {
+        addBtnClick(e);
+      });
     </script>
   </body>
 </html>
+
+<!-- 
+buttons.forEach((button) => {
+  // and for each one we add a 'click' listener
+  button.addEventListener("click", () => {
+    alert(button.id);
+  });
+}); -->
