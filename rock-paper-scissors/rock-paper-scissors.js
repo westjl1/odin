@@ -2,6 +2,7 @@ console.log("I'm running rock-paper-scissors");
 
 const divGame = document.querySelector("#game-div");
 const ulGameOutput = document.querySelector("#game-output");
+const ulGameInfo = document.querySelector("#game-info");
 
 const btnRock = document.createElement("button");
 const btnPaper = document.createElement("button");
@@ -36,46 +37,43 @@ let humanWins = 0;
 let ties = 0;
 
 function playRound(humanChoice) {
-  const newLi = document.createElement("li");
-
-  const computerSelection = getComputerChoice();
+  const computerChoice = getComputerChoice();
   const winner = getWinner(humanChoice, computerChoice);
 
-  newLi.textContent = `Human chooses ${humanChoice} Computer chooses ${computerChoice}`;
+  writeDom(
+    `Round: ${round}  Human chooses ${humanChoice}  Computer chooses ${computerChoice}`
+  );
 
   if (winner == "Computer") {
-    console.log("Computer Wins Round!");
-    newLi.textContent += ` Round ${round} winner is ${winner}`;
+    writeDom(`Round ${round} winner is ${winner}`);
     computerWins++;
     round++;
   } else if (winner == "Human") {
-    console.log("Human Wins Round");
-    newLi.textContent += ` Round ${round} winner is ${winner}`;
+    writeDom(`Round ${round} winner is ${winner}`);
     humanWins++;
     round++;
   } else {
-    console.log("Round ends in a tie, replay round");
-    newLi.textContent = ` Round ${round} ends in tie, replay round`;
+    writeDom(`Round ends in tie, replay round ${round}`);
     ties++;
-    // round--;
   }
 
-  ulGameOutput.appendChild(newLi);
-
-  if (round == 5 || computerWins == 3 || humanWins == 3) {
-    console.log("Game Over");
-    newLi.textContent += ` Game Over`;
+  if (round == 6 || computerWins == 3 || humanWins == 3) {
     if (computerWins > humanWins) {
-      console.log(`Computer Wins the Game with ${computerWins}`);
-      console.log(`Human loses the game with ${humanWins} wins`);
-      newLi.textContent += ` Computer Wins the Game with ${computerWins}`;
+      writeDom(`Game over: Computer Wins the Game with ${computerWins}`);
     } else {
-      console.log(`Human Wins the Game with ${humanWins} wins`);
-      console.log(`Computer loses the game with ${computerWins} wins`);
-      newLi.textContent += ` Human Wins the Game with ${humanWins}`;
+      writeDom(`Game over: Human Wins the Game with ${humanWins}`);
     }
-    ulGameOutput.appendChild(newLi);
+    round = 1;
+    computerWins = 0;
+    humanWins = 0;
+    ties = 0;
   }
+}
+
+function writeDom(inText) {
+  const infoLi = document.createElement("li");
+  infoLi.textContent = inText;
+  ulGameInfo.appendChild(infoLi);
 }
 
 function getComputerChoice() {
