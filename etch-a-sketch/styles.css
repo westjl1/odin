@@ -1,0 +1,53 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1 {
+  justify-self: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+
+  min-width: 50vw;
+  min-height: 50vw;
+
+  max-width: 50vw;
+  max-height: 50vw;
+
+  background-color: blue;
+}
+
+.boardSquare {
+  background-color: palevioletred;
+  /* border: 2px solid white; */
+
+  width: 16px;
+  height: 16px;
+}
+
+.etchColor {
+  background-color: gray;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
