@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //****************************
+      //****************************
+      //Map array of objects to string of names
+      //****************************
+      //****************************
+      let john = { name: "John", age: 25 };
+      let pete = { name: "Pete", age: 30 };
+      let mary = { name: "Mary", age: 28 };
+
+      let users = [john, pete, mary];
+
+      let names = users.map((user) => user.name).join(", ");
+      //or
+      //let names = users.map((user) => user.name);
+
+      console.log(names); // John, Pete, Mary
+
+      //****************************
+      //****************************
+      //SORT users by age
+      //****************************
+      //****************************
+      function sortByAge(arr) {
+        arr.sort((a, b) => a.age - b.age);
+      }
+
+      let john1 = { name: "John", age: 25 };
+      let pete1 = { name: "Pete", age: 30 };
+      let mary1 = { name: "Mary", age: 28 };
+
+      let arr = [pete1, john1, mary1];
+
+      sortByAge(arr);
+
+      console.log(arr); // now sorted is: [john, mary, pete]
+
+      //****************************
+      //****************************
+      //Get Average AGE
+      //****************************
+      //****************************
+      function getAverageAge(users) {
+        return users.reduce((prev, user) => prev + user.age, 0) / users.length;
+      }
+
+      let john2 = { name: "John", age: 25 };
+      let pete2 = { name: "Pete", age: 30 };
+      let mary2 = { name: "Mary", age: 29 };
+
+      let arr2 = [john2, pete2, mary2];
+
+      console.log(getAverageAge(arr2)); // 28
+
+      //****************************
+      //****************************
+      //Creating KEYED OBJECTS
+      //****************************
+      //****************************
+      function groupById(array) {
+        return array.reduce((obj, value) => {
+          obj[value.id] = value;
+          return obj;
+        }, {});
+      }
+
+      let users2 = [
+        { id: "john", name: "John Smith", age: 20 },
+        { id: "ann", name: "Ann Smith", age: 24 },
+        { id: "pete", name: "Pete Peterson", age: 31 },
+      ];
+
+      let usersById = groupById(users2);
+
+      /*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
+    </script>
+  </body>
+</html>
