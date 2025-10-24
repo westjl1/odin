@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Table template</title>
+    <link href="minimal-table.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <h1>Table template</h1>
+    <table>
+      <caption>
+        I'm a caption
+      </caption>
+      <tr>
+        <th></th>
+        <th colspan="2">Header 1</th>
+        <th colspan="2">Header 2</th>
+      </tr>
+      <tr>
+        <td>&nbsp;</td>
+        <td>Hi, I'm your first cell.</td>
+        <td>I'm your second cell.</td>
+        <td>I'm your third cell.</td>
+        <td>I'm your fourth cell.</td>
+      </tr>
+    </table>
+    <table>
+      <thead>
+        <caption>
+          How I chose to spend my money
+        </caption>
+        <tr>
+          <th scope="col">Purchase</th>
+          <th scope="col">Location</th>
+          <th scope="col">Date</th>
+          <th scope="col">Evaluation</th>
+          <th scope="col">Cost (€)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Haircut</td>
+          <td>Hairdresser</td>
+          <td>12/09</td>
+          <td>Great idea</td>
+          <td>30</td>
+        </tr>
+        <tr>
+          <td>Lasagna</td>
+          <td>Restaurant</td>
+          <td>12/09</td>
+          <td>Regrets</td>
+          <td>18</td>
+        </tr>
+        <tr>
+          <td>Shoes</td>
+          <td>Shoeshop</td>
+          <td>13/09</td>
+          <td>Big regrets</td>
+          <td>65</td>
+        </tr>
+        <tr>
+          <td>Toothpaste</td>
+          <td>Supermarket</td>
+          <td>13/09</td>
+          <td>Good</td>
+          <td>5</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">SUM</td>
+          <td>118</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>
