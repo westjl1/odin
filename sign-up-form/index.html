@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign Up Form</title>
+    <link rel="stylesheet" href="./sign-up-form.css" />
+    <script src="./sign-up-form.js" defer></script>
+  </head>
+  <body>
+    <div class="left-section">
+      <div class="logo-section">
+        <img src="odin-lined.png" alt="Odin logo" height="48px" width="48px" />
+        ODIN
+      </div>
+    </div>
+    <div class="right-section">
+      <div class="right-top">
+        <div>
+          This is not a real online service! You know you need something like
+          this in your life to help you realize your deepest dreams.
+        </div>
+        <div>Sign up now to get started.</div>
+        <br />
+        <div>You know you want to.</div>
+      </div>
+      <div class="right-middle">
+        <form id="new-user" action="#" method="get">
+          <fieldset>
+            <legend>Let's do this!</legend>
+            <section>
+              <p>
+                <label for="given-name">First Name</label>
+                <input
+                  type="text"
+                  id="given-name"
+                  name="given-name"
+                  autocomplete="given-name"
+                />
+              </p>
+              <p class="section-right">
+                <label for="family-name">Last Name</label>
+                <input
+                  type="text"
+                  id="family-name"
+                  name="family-name"
+                  autocomplete="family-name"
+                />
+              </p>
+            </section>
+            <section>
+              <p>
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  required
+                />
+              </p>
+              <p class="section-right">
+                <label for="phone">Phone Number</label>
+                <input type="text" id="phone" name="phone" autocomplete="tel" />
+              </p>
+            </section>
+            <section>
+              <p>
+                <label for="psw">Password</label>
+                <input
+                  type="password"
+                  id="psw"
+                  name="psw"
+                  autocomplete="new-password"
+                  minlength="8"
+                  required
+                />
+              </p>
+              <p class="section-right">
+                <label for="confpsw">Confirm Password</label>
+                <input type="password" id="confpsw" name="confpsw" required />
+              </p>
+            </section>
+          </fieldset>
+        </form>
+      </div>
+      <div class="right-bottom">
+        <div>
+          <button type="submit" form="new-user">Create Account</button>
+        </div>
+        <div>Already have an account? <a href="#">Log In</a></div>
+      </div>
+    </div>
+  </body>
+</html>
