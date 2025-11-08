@@ -1,3 +1,5 @@
+const ulBookInfo = document.querySelector("#book-info");
+
 function Book(title, writer, pages, read) {
   if (!new.target) {
     throw Error("You must use the 'new' operator to call the constructor");
@@ -24,10 +26,34 @@ function addBook(title, writer, pages, read) {
 }
 
 addBook("The Hobbit", "J.R.R. Tolkien", 295, true);
-addBook("The Stand", "Stephen Kink", 785, false);
-addBook("IT", "Stephen Kink", 485, true);
+addBook("The Stand", "Stephen King", 785, false);
+addBook("IT", "Stephen King", 485, true);
+addBook("The Long Walk", "Stephen King", 231, true);
 
 console.log(myLibrary);
+
+function listBooks() {
+  if (myLibrary.length > 0) {
+    myLibrary.forEach((book) => {
+      const infoLi = document.createElement("li");
+      infoLi.id = book.id;
+
+      const btnDelete = document.createElement("button");
+      btnDelete.textContent = "Delete";
+      btnDelete.id = book.id;
+
+      btnDelete.addEventListener("click", (e) => {
+        console.log(e.target.id);
+      });
+
+      infoLi.textContent = book.info() + " ";
+      infoLi.appendChild(btnDelete);
+      ulBookInfo.appendChild(infoLi);
+    });
+  }
+}
+
+listBooks();
 
 //theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 
