@@ -1,3 +1,5 @@
+let myLibrary = [];
+
 const ulBookInfo = document.querySelector("#book-info");
 
 function Book(title, writer, pages, read) {
@@ -19,8 +21,6 @@ function Book(title, writer, pages, read) {
   };
 }
 
-let myLibrary = [];
-
 function addBook(title, writer, pages, read) {
   myLibrary.push(new Book(title, writer, pages, read));
 }
@@ -39,15 +39,26 @@ function listBooks() {
       infoLi.id = book.id;
 
       const btnDelete = document.createElement("button");
+      btnDelete.type = "button";
       btnDelete.textContent = "Delete";
       btnDelete.id = book.id;
+
+      const btnUpRead = document.createElement("button");
+      btnUpRead.type = "button";
+      btnUpRead.textContent = `${book.read ? "Up Not Read" : "Up Read"}`;
+      btnUpRead.id = book.id;
 
       btnDelete.addEventListener("click", (e) => {
         console.log(e.target.id);
       });
 
+      btnUpRead.addEventListener("click", (e) => {
+        console.log(e.target.id);
+      });
+
       infoLi.textContent = book.info() + " ";
       infoLi.appendChild(btnDelete);
+      infoLi.appendChild(btnUpRead);
       ulBookInfo.appendChild(infoLi);
     });
   }
