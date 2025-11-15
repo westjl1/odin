@@ -33,6 +33,7 @@ addBook("The Long Walk", "Stephen King", 231, true);
 console.log(myLibrary);
 
 function listBooks() {
+  ulBookInfo.innerHTML = "";
   if (myLibrary.length > 0) {
     myLibrary.forEach((book) => {
       const infoLi = document.createElement("li");
@@ -49,11 +50,12 @@ function listBooks() {
       btnUpRead.id = book.id;
 
       btnDelete.addEventListener("click", (e) => {
-        console.log(e.target.id);
+        removeBook(e.target.id);
       });
 
       btnUpRead.addEventListener("click", (e) => {
-        console.log(e.target.id);
+        e.target.setRead(!e.target.read);
+        listBooks();
       });
 
       infoLi.textContent = book.info() + " ";
@@ -62,6 +64,11 @@ function listBooks() {
       ulBookInfo.appendChild(infoLi);
     });
   }
+}
+
+function removeBook(bookId) {
+  myLibrary = myLibrary.filter((book) => book.id !== bookId);
+  listBooks();
 }
 
 listBooks();
