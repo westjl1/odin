@@ -28,8 +28,8 @@ function Book(title, writer, pages, read) {
   this.pages = pages;
   this.read = read;
   this.info = function () {
-    return `${title} by ${writer}, ${pages} pages, ${
-      read ? "Read" : "Not read"
+    return `${this.title} by ${this.writer}, ${this.pages} pages, ${
+      this.read ? "Read" : "Not read"
     }`;
   };
 }
@@ -49,35 +49,34 @@ addBook("The Long Walk", "Stephen King", 231, true);
 
 function listBooks() {
   ulBookInfo.innerHTML = "";
-  if (myLibrary.length > 0) {
-    myLibrary.forEach((book) => {
-      const infoLi = document.createElement("li");
-      infoLi.id = book.id;
 
-      const btnDelete = document.createElement("button");
-      btnDelete.type = "button";
-      btnDelete.textContent = "Delete";
-      btnDelete.id = book.id;
+  myLibrary.forEach((book) => {
+    const infoLi = document.createElement("li");
+    infoLi.id = "infoLi_" + book.id;
 
-      const btnUpRead = document.createElement("button");
-      btnUpRead.type = "button";
-      btnUpRead.textContent = `${book.read ? "Up Not Read" : "Up Read"}`;
-      btnUpRead.id = book.id;
+    const btnDelete = document.createElement("button");
+    btnDelete.type = "button";
+    btnDelete.textContent = "Delete";
+    btnDelete.id = "btnDelete_" + book.id;
 
-      btnDelete.addEventListener("click", (e) => {
-        removeBook(e.target.id);
-      });
+    const btnUpRead = document.createElement("button");
+    btnUpRead.type = "button";
+    btnUpRead.textContent = `${book.read ? "Up Not Read" : "Up Read"}`;
+    btnUpRead.id = "btnUpRead_" + book.id;
 
-      btnUpRead.addEventListener("click", (e) => {
-        updateRead(e.target.id);
-      });
-
-      infoLi.textContent = book.info() + " ";
-      infoLi.appendChild(btnDelete);
-      infoLi.appendChild(btnUpRead);
-      ulBookInfo.appendChild(infoLi);
+    btnDelete.addEventListener("click", (e) => {
+      removeBook(e.target.id.slice(e.target.id.indexOf("_") + 1));
     });
-  }
+
+    btnUpRead.addEventListener("click", (e) => {
+      updateRead(e.target.id.slice(e.target.id.indexOf("_") + 1));
+    });
+
+    infoLi.textContent = book.info() + " ";
+    infoLi.appendChild(btnDelete);
+    infoLi.appendChild(btnUpRead);
+    ulBookInfo.appendChild(infoLi);
+  });
 }
 
 function removeBook(bookId) {
@@ -86,12 +85,17 @@ function removeBook(bookId) {
 }
 
 function updateRead(bookId) {
-  myLibrary.forEach((book) => {
+  // myLibrary.forEach((book) => {
+  //   if (book.id === bookId) {
+  //     book.setRead(!book.read);
+  //   }
+  // });
+  myLibrary = myLibrary.map((book) => {
     if (book.id === bookId) {
       book.setRead(!book.read);
     }
+    return book;
   });
-  console.log("yep");
   listBooks();
 }
 
