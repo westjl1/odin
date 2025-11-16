@@ -1,6 +1,22 @@
 let myLibrary = [];
 
 const ulBookInfo = document.querySelector("#book-info");
+const dialog = document.querySelector("dialog");
+const showButton = document.querySelector("#open-dialog");
+const closeButton = document.querySelector("#close-dialog");
+const insertBook = document.querySelector("#insert-book");
+
+showButton.addEventListener("click", () => {
+  dialog.showModal();
+});
+
+closeButton.addEventListener("click", () => {
+  dialog.close();
+});
+
+insertBook.addEventListener("click", (e) => {
+  e.preventDefault();
+});
 
 function Book(title, writer, pages, read) {
   if (!new.target) {
@@ -16,10 +32,11 @@ function Book(title, writer, pages, read) {
       read ? "Read" : "Not read"
     }`;
   };
-  this.setRead = function (value) {
-    this.read = value;
-  };
 }
+
+Book.prototype.setRead = function (value) {
+  this.read = value;
+};
 
 function addBook(title, writer, pages, read) {
   myLibrary.push(new Book(title, writer, pages, read));
@@ -29,8 +46,6 @@ addBook("The Hobbit", "J.R.R. Tolkien", 295, true);
 addBook("The Stand", "Stephen King", 785, false);
 addBook("IT", "Stephen King", 485, true);
 addBook("The Long Walk", "Stephen King", 231, true);
-
-console.log(myLibrary);
 
 function listBooks() {
   ulBookInfo.innerHTML = "";
@@ -54,8 +69,7 @@ function listBooks() {
       });
 
       btnUpRead.addEventListener("click", (e) => {
-        e.target.setRead(!e.target.read);
-        listBooks();
+        updateRead(e.target.id);
       });
 
       infoLi.textContent = book.info() + " ";
@@ -68,6 +82,16 @@ function listBooks() {
 
 function removeBook(bookId) {
   myLibrary = myLibrary.filter((book) => book.id !== bookId);
+  listBooks();
+}
+
+function updateRead(bookId) {
+  myLibrary.forEach((book) => {
+    if (book.id === bookId) {
+      book.setRead(!book.read);
+    }
+  });
+  console.log("yep");
   listBooks();
 }
 

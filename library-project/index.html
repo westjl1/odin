@@ -8,7 +8,41 @@
     <script src="./library.js" defer></script>
   </head>
   <body>
-    <div class="book-list">My Books<ul id="book-info"></ul></div>
+    <div class="book-list">
+      My Books
+      <ul id="book-info"></ul>
+    </div>
+    <div class="add-book">
+      <button id="open-dialog" type="button">Add Book</button>
+      <dialog>
+        <form action="/my-handling-form-page" method="post">
+          <fieldset>
+            <legend>Add book to My Library</legend>
+            <p>
+              <label for="title">Title</label>
+              <input id="title" type="text" autofocus />
+            </p>
+            <p>
+              <label for="author">Author</label>
+              <input id="author" type="text" />
+            </p>
+            <p>
+              <label for="pages">Pages</label>
+              <input id="pages" type="number" />
+            </p>
+            <p>
+              <label for="read">Read Status</label>
+              <select name="read" id="read">
+                <option value="true">Have read</option>
+                <option value="false">Have NOT read</option>
+              </select>
+            </p>
+            <button id="insert-book" type="submit">Add</button>
+            <button id="close-dialog" type="button">Cancel</button>
+          </fieldset>
+        </form>
+      </dialog>
+    </div>
     <!-- <a href="../index.html">My Odin Project root</a> -->
   </body>
 </html>
