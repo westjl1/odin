@@ -2,20 +2,29 @@ let myLibrary = [];
 
 const ulBookInfo = document.querySelector("#book-info");
 const dialog = document.querySelector("dialog");
+const fieldSet = document.querySelector("#fldSet");
 const showButton = document.querySelector("#open-dialog");
-const closeButton = document.querySelector("#close-dialog");
-const insertBook = document.querySelector("#insert-book");
+const insertBook = document.querySelector("#insertBook");
 
 showButton.addEventListener("click", () => {
   dialog.showModal();
 });
 
-closeButton.addEventListener("click", () => {
-  dialog.close();
+dialog.addEventListener("close", (e) => {
+  if (dialog.returnValue === "add") {
+    const title = dialog.querySelector("#title").value;
+    const writer = dialog.querySelector("#author").value;
+    const pages = parseInt(dialog.querySelector("#pages").value);
+    const read = dialog.querySelector("#read").value === "true" ? true : false;
+
+    addBook(title, writer, pages, read);
+    listBooks();
+  }
 });
 
 insertBook.addEventListener("click", (e) => {
   e.preventDefault();
+  dialog.close("add");
 });
 
 function Book(title, writer, pages, read) {

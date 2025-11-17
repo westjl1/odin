@@ -14,21 +14,21 @@
     </div>
     <div class="add-book">
       <button id="open-dialog" type="button">Add Book</button>
-      <dialog>
-        <form action="/my-handling-form-page" method="post">
-          <fieldset>
+      <dialog id="dlgAddBook">
+        <form method="dialog">
+          <fieldset id="fldSet">
             <legend>Add book to My Library</legend>
             <p>
               <label for="title">Title</label>
-              <input id="title" type="text" autofocus />
+              <input id="title" type="text" required autofocus value="Title" />
             </p>
             <p>
               <label for="author">Author</label>
-              <input id="author" type="text" />
+              <input id="author" type="text" required value="Author" />
             </p>
             <p>
               <label for="pages">Pages</label>
-              <input id="pages" type="number" />
+              <input id="pages" type="number" required value="1" />
             </p>
             <p>
               <label for="read">Read Status</label>
@@ -37,8 +37,8 @@
                 <option value="false">Have NOT read</option>
               </select>
             </p>
-            <button id="insert-book" type="submit">Add</button>
-            <button id="close-dialog" type="button">Cancel</button>
+            <button id="insertBook" value="add">Add</button>
+            <button value="cancel" formmethod="dialog">Cancel</button>
           </fieldset>
         </form>
       </dialog>
