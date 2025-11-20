@@ -1,6 +1,5 @@
 // This is a factory function that will create a tic-tac-toe game board
-// Each cell will start with a value of 0,
-// which means it is empty
+// Each cell will start with a value of "" (an empty string)
 function Gameboard() {
   const rows = 3;
   const columns = 3;
@@ -23,6 +22,7 @@ function Gameboard() {
   };
 
   const winner = () => {
+    // Return the mark of the winning player, or "" if no winner yet
     // Check rows
     for (let i = 0; i < rows; i++) {
       if (
@@ -159,15 +159,15 @@ function GameController(playerOneName = "X", playerTwoName = "O") {
       return;
     }
 
-    //For debugging purposes, check for a winner or tie after each round
     if (board.winner() !== "") {
+      //For debugging purposes, check for a winner or tie after each round
       board.printBoard();
       console.log(`${getActivePlayer().name} wins!`);
       return;
     }
-
-    //For debugging purposes, check for a tie
+    
     if (board.boardFull()) {
+      //For debugging purposes, check for a tie
       board.printBoard();
       console.log("It's a tie!");
       return;
@@ -198,7 +198,7 @@ function ScreenController() {
 
   const updateScreen = () => {
     // clear the board
-    boardDiv.textContent = "";
+    boardDiv.innerHTML = "";
 
     // get the newest version of the board and player turn
     const board = game.getBoard();
@@ -216,11 +216,9 @@ function ScreenController() {
 
     board.forEach((row, rowIndex) => {
       row.forEach((cell, columnIndex) => {
-        // Anything clickable should be a button!!
         const cellButton = document.createElement("button");
         cellButton.classList.add("cell");
-        // Create a data attribute to identify the column
-        // This makes it easier to pass into our `playRound` function
+
         cellButton.dataset.column = columnIndex;
         cellButton.dataset.row = rowIndex;
 
@@ -228,20 +226,21 @@ function ScreenController() {
         boardDiv.appendChild(cellButton);
       });
     });
-
-    // Add event listener for the board
-    function handleBoardClick(e) {      
-      const selectedRow = e.target.dataset.row;
-      const selectedColumn = e.target.dataset.column;
-      // Make sure I've clicked a column and not the gaps in between
-      if (!selectedColumn || !selectedRow) return;
-
-      game.playRound(selectedRow, selectedColumn);
-
-      updateScreen();
-    }
-    boardDiv.addEventListener("click", handleBoardClick);
   };
+
+  // Add event listener for the board
+  function handleBoardClick(e) {
+    const selectedRow = e.target.dataset.row;
+    const selectedColumn = e.target.dataset.column;
+    // Make sure I've clicked a column and not the gaps in between
+    if (!selectedColumn || !selectedRow) return;
+
+    game.playRound(selectedRow, selectedColumn);
+
+    updateScreen();
+  }
+  boardDiv.addEventListener("click", handleBoardClick);
+
   // Initial render
   updateScreen();
 }
