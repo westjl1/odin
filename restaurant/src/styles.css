@@ -1,0 +1,58 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: lightgray;
+  line-height: 1.6;
+  z-index: 1;
+}
+
+body::before {
+  content: "";
+  background-image: url("./OdinPizza.jpg");
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.5; /* Adjust the opacity value (0.0 to 1.0) */
+  z-index: -1; /* Puts the pseudo-element behind the content */
+}
+
+nav {
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+button {
+  cursor: pointer;
+}
+
+#content {
+  text-align: center;
+}
