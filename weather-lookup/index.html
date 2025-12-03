@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="lookup-weather.js" defer></script>
+  </head>
+  <body>
+    <h1>Weather Lookup</h1>
+    <h3>Enter a location below, click go to see the weather</h3>
+    <!-- <label for="txtLookup">Enter a location</label> -->
+    <input type="text" id="txtLookup" name="txtLookup" required />
+    <button id="btnLookup">Go</button>
+    <div id="txtOutput"></div>
+    <div id="imgOutput"></div>
+    <div id="loading-spinner" style="display: none">
+      <div class="spinner-circle"></div>
+    </div>
+  </body>
+</html>

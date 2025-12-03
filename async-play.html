@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>      
+      //Helpers for examples below
+      function fetchX() {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            // reject( "Timeout!" );
+            resolve(1);
+          }, 5000);
+        });
+      }
+
+      function fetchY() {
+        //return new Error("Oops, error.");
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            // reject( "Timeout!" );
+            resolve(1);
+          }, 2000);
+        });
+      }
+      
+      function add(xPromise, yPromise) {
+        // `Promise.all([ .. ])` takes an array of promises,
+        // and returns a new promise that waits on them
+        // all to finish
+        return (
+          Promise.all([xPromise, yPromise])
+
+            // when that promise is resolved, let's take the
+            // received `X` and `Y` values and add them together.
+            .then(function (values) {
+              // `values` is an array of the messages from the
+              // previously resolved promises
+              return values[0] + values[1];
+            })
+        );
+      }
+
+      // `fetchX()` and `fetchY()` return promises for
+      // their respective values, which may be ready
+      // *now* or *later*.
+      Promise.resolve(add(fetchX(), fetchY()))
+        // we get a promise back for the sum of those
+        // two numbers.
+        // now we chain-call `then(..)` to wait for the
+        // resolution of that returned promise.
+        .then(
+          // fulfillment handler
+          function fulfilled(sum) {
+            console.log(sum);
+          },
+          // rejection handler
+          function rejected(err) {
+            console.error(err); // bummer!
+          }
+        );
+    </script>
+  </body>
+</html>

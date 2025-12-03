@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button type="button" onclick="setNewGiphy()">Change image</button>
+    <img src="#" />
+    <script>
+      const img = document.querySelector("img");
+      fetch(
+        "https://api.giphy.com/v1/gifs/translate?api_key=gIr5EZQhAHQYgbHXln73tQgh7QevcjKf&s=cats"
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (response) {
+          img.src = response.data.images.original.url;
+        });
+      //async/await syntax??
+      async function setNewGiphy() {
+        const url =
+          "https://api.giphy.com/v1/gifs/translate?api_key=gIr5EZQhAHQYgbHXln73tQgh7QevcjKf&s=dogs";
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          const result = await response.json();
+          console.log(result);
+          img.src = result.data.images.original.url;
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+    </script>
+  </body>
+</html>
