@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function fibs(n) {
+        if (n === 1) {
+          return [0];
+        }
+        if (n === 2) {
+          return [0, 1];
+        }
+
+        let returnArray = [0, 1];
+        for (let i = 2; i < n; i++) {
+          const nextValue =
+            returnArray[returnArray.length - 2] +
+            returnArray[returnArray.length - 1];
+          returnArray.push(nextValue);
+        }
+        return returnArray;
+      }
+
+      function fibsRec(n) {
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return fibsRec(n - 1) + fibsRec(n - 2);
+      }
+
+      //   console.log(fibs(8));
+      //   console.log(fibsRec(7));
+
+      function quickSort(inArray) {
+        if (inArray.length <= 1) {
+          return inArray;
+        }
+
+        const [checkNum, ...remainder] = inArray;
+
+        const belowCheck = remainder.filter((num) => num <= checkNum);
+        const aboveCheck = remainder.filter((num) => num > checkNum);
+
+        return [...quickSort(belowCheck), checkNum, ...quickSort(aboveCheck)];
+      }
+
+      console.log(quickSort([22]));
+    </script>
+  </body>
+</html>
