@@ -36,13 +36,37 @@ class MyHashMap {
 
     // const primeNumber = 31;
     for (let i = 0; i < key.length; i++) {
-      hashCode = key.charCodeAt(i) % this.capacity;
+      //   hashCode = key.charCodeAt(i) % this.capacity;
+      hashCode = key.charCodeAt(i);
     }
 
     return hashCode;
   }
 
-  set(key, value) {}
+  bucket(key) {
+    let simpleHash = hash(key);
+    // return this.buckets[simpleHash];
+    return this.buckets[simpleHash % this.capacity];
+  }
+
+  bucketItemContent(bucket, key) {
+    for (content of bucket) {
+      if (content.key == key) {
+        return content;
+      }
+    }
+    return null;
+  }
+
+  set(key, value) {
+    currentBucket = this.bucket(key);
+    checkBucketItemContent = this.bucketItemContent(currentBucket, key);
+    if (checkBucketItemContent) {
+      checkBucketItemContent.value = value;
+      return;
+    }
+    currentBucket.push({ key, value });
+  }
 }
 
 const myNewHashMap = new MyHashMap();
