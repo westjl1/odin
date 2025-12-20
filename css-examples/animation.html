@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./animation.css" id="cssFile" />
+  </head>
+  <body>
+    <div id="ball"></div>
+
+    <label for="css-class"> Choose a css class: </label>
+    <select class="css-class" name="css-class" id="cssclass">
+      <option value="" selected>None …</option>
+    </select>
+    <script>
+      const selectElement = document.getElementById("cssclass");
+      const ballElement = document.getElementById("ball");
+
+      for (const sheet of document.styleSheets) {
+        // Check if the stylesheet is from the same origin to avoid SecurityError
+        if (sheet.href && !sheet.href.startsWith(window.location.origin)) {
+          continue; // Skip cross-origin stylesheets
+        }
+
+        console.log("Stylesheet title:", sheet.title || sheet.href);
+
+        try {
+          // Loop through all CSS rules in the stylesheet
+          const rules = sheet.cssRules || sheet.rules; // cross-browser compatibility
+          for (const rule of rules) {
+            if (rule.selectorText.includes(".")) {
+              const nextClass = rule.selectorText.slice(1);
+              const nextOption = document.createElement("option");
+              nextOption.textContent = `.${nextClass}`;
+              nextOption.value = nextClass;
+              selectElement.appendChild(nextOption);
+            }
+          }
+        } catch (e) {
+          console.warn(
+            "Could not access cssRules for this sheet (likely cross-origin):",
+            e
+          );
+        }
+      }
+
+      selectElement.addEventListener("change", (event) => {
+        ballElement.className = event.target.value;
+      });
+    </script>
+  </body>
+</html>

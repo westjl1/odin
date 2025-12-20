@@ -1,0 +1,108 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  border: 2px solid;
+  margin-bottom: 2rem;
+}
+
+body {
+  background-color: black;
+  color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+select {
+  font-size: 1rem;
+}
+
+.rotate-by-deg {
+  transform: rotate(45deg);
+}
+
+.rotate-by-rad {
+  transform: rotate(-1rad);
+}
+
+.rotate-by-turn {
+  transform: rotate(0.3turn);
+}
+
+.scaleX {
+  transform: scaleX(0.25);
+}
+
+.scaleY {
+  transform: scaleY(1.5);
+}
+
+.scaleXY {
+  transform: scale(0.25, 1.5);
+}
+
+.scale {
+  transform: scale(0.5);
+}
+
+.skewX {
+  transform: skewX(45deg);
+}
+
+.skewY {
+  transform: skewY(-0.5rad);
+}
+
+.skewXY {
+  transform: skew(45deg, -0.5rad);
+}
+
+.skew {
+  /* single value behaves the same as skewX */
+  transform: skew(45deg);
+}
+
+.translateX {
+  transform: translateX(20px);
+}
+
+.translateY {
+  /* percent values are of the element's width */
+  transform: translateY(-33%);
+}
+
+.translateXY {
+  transform: translate(20px, -33%);
+}
+
+.rotateX {
+  transform: rotateX(60deg);
+}
+
+.rotateY {
+  transform: rotateY(60deg);
+}
+
+.rotateZ {
+  transform: rotateZ(60deg);
+}
+

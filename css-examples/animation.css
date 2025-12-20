@@ -1,0 +1,211 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 50%;
+  height: auto;
+  border: 2px solid;
+  margin-bottom: 2rem;
+}
+
+body {
+  background-color: black;
+  color: lightgray;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+select {
+  font-size: 1rem;
+  margin-top: 0.25rem;
+}
+
+#ball {
+  margin: 2rem;
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  border: 6px solid gray;
+  border-bottom: 8px solid darkgreen;
+  border-radius: 50%;
+}
+
+.red-green {
+  animation-duration: 2s;
+  animation-name: change-color;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: linear;
+}
+
+.red-green-plus {
+  animation: 2s change-color-plus infinite alternate;
+}
+
+.simple-slide-in {
+  animation-duration: 2s;
+  animation-name: slide-in;
+  animation-iteration-count: 1;
+  animation-direction: forward;
+  animation-timing-function: linear;
+}
+
+.slide-in-fill {
+  animation: slide-in-fill 1000ms;
+  animation-delay: 500ms;
+  animation-fill-mode: backwards;
+}
+
+.simple-drop-in {
+  animation-duration: 2s;
+  animation-name: drop-in;
+  animation-iteration-count: 5;
+  animation-direction: alternate-reverse;
+  animation-timing-function: linear;
+}
+
+.spinner {
+  animation: spin 1000ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;
+}
+
+.spinner-fancy {
+  animation: fancy-spin 2000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: reverse;
+}
+
+.fade-out-fill {
+  animation: fade-out 1000ms;
+  animation-fill-mode: forwards;
+}
+
+.bounce {
+  animation-duration: 500ms;
+  animation-name: bounce;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(0.2, 0.65, 0.6, 1);
+}
+
+@keyframes change-color {
+  from {
+    background-color: red;
+  }
+
+  to {
+    background-color: green;
+  }
+}
+
+@keyframes change-color-plus {
+  from {
+    background-color: red;
+  }
+
+  50% {
+    transform: scale(2);
+    background-color: blue;
+  }
+
+  to {
+    background-color: green;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translate(-150vw, -150vh);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
+
+@keyframes drop-in {
+  from {
+    transform: rotate(-30deg) translateY(-150vw);
+    opacity: 0;
+  }
+  to {
+    transform: rotate(0deg) translateY(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0turn);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@keyframes fancy-spin {
+  0% {
+    transform: rotate(0turn) scale(1);
+  }
+  25% {
+    transform: rotate(1turn) scale(1);
+  }
+  50% {
+    transform: rotate(1turn) scale(1.5);
+  }
+  75% {
+    transform: rotate(0turn) scale(1.5);
+  }
+  100% {
+    transform: rotate(0turn) scale(1);
+  }
+}
+
+@keyframes fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes slide-in-fill {
+  from {
+    transform: translateX(-100%);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-20px);
+  }
+}
