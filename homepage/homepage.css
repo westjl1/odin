@@ -4,6 +4,7 @@ html {
   background-image: linear-gradient(70deg, black, gray);
   background-attachment: fixed;
   font-family: Inter, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: lightgray;
 }
 
 body {
@@ -16,12 +17,17 @@ body {
 .content {
   max-width: 800px;
   margin: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 header {
 }
 
-img {
+#odin-img {
   height: auto;
   margin-top: -50px;
   margin-left: -30px;
@@ -31,6 +37,7 @@ img {
 }
 
 .about-me-card {
+  color: black;
   background-color: lightgray;
   border: 1px solid;
   border-radius: 1%;
@@ -39,3 +46,33 @@ img {
   margin-top: 0.5rem;
   float: none;
 }
+
+.my-work {  
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.my-work-card {  
+  background-color: lightgray;
+  border: 2px solid lightgray;
+  border-radius: 1%;
+  max-width: 150px;
+  color: black;
+  margin: 1rem;
+}
+
+/* .my-work-card-header {
+  background-color: red;
+  padding: 2rem;
+  padding-bottom: 2rem;
+  display: flex;
+  justify-content: center;
+  color: lightgray;
+} */
+
+.my-work-card-content {
+  padding: 1rem;
+  padding-top: 0rem;
+}
+
