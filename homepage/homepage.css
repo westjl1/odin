@@ -22,9 +22,12 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  /* border: 2px solid black; */
 }
 
-header {
+main {
+  /* border: 2px solid black; */
 }
 
 #odin-img {
@@ -47,13 +50,15 @@ header {
   float: none;
 }
 
-.my-work {  
+.my-work {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   flex-wrap: wrap;
+
+  /* border: 2px solid black; */
 }
 
-.my-work-card {  
+.my-work-card {
   background-color: lightgray;
   border: 2px solid lightgray;
   border-radius: 1%;
@@ -62,17 +67,48 @@ header {
   margin: 1rem;
 }
 
-/* .my-work-card-header {
-  background-color: red;
-  padding: 2rem;
-  padding-bottom: 2rem;
-  display: flex;
-  justify-content: center;
-  color: lightgray;
-} */
-
 .my-work-card-content {
   padding: 1rem;
   padding-top: 0rem;
+
+  /* display: flex;
+  flex-wrap: wrap; */
 }
 
+footer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 1rem;
+
+  /* border: 2px solid black; */
+}
+
+.footer-left {
+  padding: 1rem;
+  max-width: 200px;
+  margin-top: -35px;
+}
+
+#at-work-img {
+  height: 50%;
+  max-width: 50%;
+}
+
+.my-work-header {
+  justify-self: center;
+}
+
+.add-icon {
+  display: flex;
+  align-items: center;
+}
+
+.icon-image {
+  margin-right: 1rem;
+}
+
+.icon {
+  height: 20%;
+  max-width: 20%;
+}
